@@ -71,20 +71,32 @@ export default function ChatInterface() {
   };
 
   return (
-    <div className="max-w-3xl mx-auto mt-10 space-y-6 p-4">
+    <div
+      className={`relative max-w-3xl mx-auto p-4 space-y-6 ${
+        messages.length > 0 ? "pt-20" : "mt-10"
+      }`}
+    >
       {/* Header */}
-      <div className="text-center">
-        <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white">
-          OmniChat.AI
-        </h1>
-        <p className="text-gray-600 dark:text-gray-300 text-sm mt-2">
-          Chat with multiple language models.
-        </p>
-      </div>
+      {messages.length === 0 ? (
+        <div className="text-center">
+          <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white">
+            OmniChat.AI
+          </h1>
+          <p className="text-gray-600 dark:text-gray-300 text-sm mt-2">
+            Chat with multiple language models.
+          </p>
+        </div>
+      ) : (
+        <div className="fixed top-4 left-4 z-50">
+          <h1 className="text-xl font-bold tracking-tight text-gray-900 dark:text-white">
+            OmniChat.AI
+          </h1>
+        </div>
+      )}
 
       {/* Chat History */}
       {messages.length > 0 && (
-        <div className="h-[60vh] overflow-y-auto border rounded-xl p-4 space-y-4 bg-white dark:bg-black/10">
+        <div className="space-y-4">
           {messages.map((msg, i) => (
             <div
               key={i}
