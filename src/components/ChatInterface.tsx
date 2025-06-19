@@ -27,6 +27,8 @@ export default function ChatInterface() {
     "deepseek/deepseek-r1-0528-qwen3-8b:free":
       "Deepseek R1 0528 Qwen3 8B (DeepSeek)",
     "google/gemma-3-12b-it:free": "Gemma 3 12B (Google)",
+    "mistralai/mistral-small-3.1-24b-instruct:free":
+      "Mistral Small 3.1 24B (Mistral)",
   };
 
   const sendMessage = async () => {

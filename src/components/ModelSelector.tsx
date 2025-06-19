@@ -39,6 +39,9 @@ export default function ModelSelector({
           <SelectItem value="google/gemma-3-12b-it:free">
             Gemma 3 12B (Google)
           </SelectItem>
+          <SelectItem value="mistralai/mistral-small-3.1-24b-instruct:free">
+            Mistral Small 3.1 24B (Mistral)
+          </SelectItem>
         </SelectContent>
       </Select>
     </div>
