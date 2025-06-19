@@ -131,13 +131,16 @@ export default function ChatInterface() {
             ))}
 
             {loading && (
-              <div className="mr-auto bg-gray-100 dark:bg-gray-800 rounded-xl p-3 max-w-[80%]">
+              <div className="mr-auto bg-gray-100 dark:bg-gray-800 rounded-xl p-3 max-w-[80%] flex flex-col">
                 <div className="text-xs font-semibold mb-1">
                   {modelLabels[selectedModel] ?? "AI"}
                 </div>
-                <p className="text-sm text-gray-500 dark:text-gray-300">
-                  Typing...
-                </p>
+                <div className="flex items-center gap-2">
+                  <p className="text-sm text-gray-500 dark:text-gray-300">
+                    Typing...
+                  </p>
+                  <div className="w-4 h-4 border-2 border-t-transparent border-gray-400 dark:border-gray-300 rounded-full animate-spin" />
+                </div>
               </div>
             )}
           </div>
