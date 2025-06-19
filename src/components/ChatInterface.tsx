@@ -58,7 +58,7 @@ export default function ChatInterface() {
       };
 
       setMessages((prev) => [...prev, assistantMessage]);
-    } catch (err) {
+    } catch (_err) {
       setMessages((prev) => [
         ...prev,
         { role: "assistant", content: "❌ Error: Unable to fetch response." },
