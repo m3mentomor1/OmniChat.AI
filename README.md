@@ -7,7 +7,7 @@
   <img src="https://github.com/user-attachments/assets/2246412c-7c46-4645-bac1-39ffe9c56def" alt="Logo">
 </div><br>
 
-An AI Chat Progressive Web App (PWA) that lets users chat with the following LLMs:
+A conversational AI progressive web app that lets users chat with the following LLMs:
 - Phi 4 Reasoning Plus (Microsoft)
 - Llama 3.3 8B Instruct (Meta)
 - Deepseek R1 0528 Qwen3 8B (DeepSeek)
