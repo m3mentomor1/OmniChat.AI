@@ -4,7 +4,7 @@
 
 ### 🧐 I. Overview
 <div align="center">
-  <img src="https://github.com/user-attachments/assets/58585d62-c80c-4f34-af6c-5e4cd50d17cd" alt="Logo">
+  <img src="https://github.com/user-attachments/assets/2246412c-7c46-4645-bac1-39ffe9c56def" alt="Logo">
 </div><br>
 
 An AI Chat Progressive Web App (PWA) that lets users chat with the following LLMs:
