@@ -1,12 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useTheme } from "next-themes";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import ModelSelector from "./ModelSelector";
 import ReactMarkdown from "react-markdown";
-import ThemeToggle from "@/components/ThemeToggle"; // ⬅️ Import the theme toggle button
+import ThemeToggle from "@/components/ThemeToggle";
 
 type Message = {
   role: "user" | "assistant";
@@ -20,12 +21,17 @@ export default function ChatInterface() {
   const [input, setInput] = useState("");
   const [messages, setMessages] = useState<Message[]>([]);
   const [loading, setLoading] = useState(false);
+  const { theme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const modelLabels: Record<string, string> = {
     "microsoft/phi-4-reasoning-plus:free": "Phi 4 Reasoning Plus (Microsoft)",
     "meta-llama/llama-3.3-8b-instruct:free": "Llama 3.3 8B Instruct (Meta)",
-    "deepseek/deepseek-r1-0528-qwen3-8b:free":
-      "Deepseek R1 0528 Qwen3 8B (DeepSeek)",
+    "deepseek/deepseek-r1-0528-qwen3-8b:free": "Deepseek Qwen3 8B (DeepSeek)",
     "google/gemma-3-12b-it:free": "Gemma 3 12B (Google)",
     "mistralai/mistral-small-3.1-24b-instruct:free":
       "Mistral Small 3.1 24B (Mistral)",
@@ -34,11 +40,7 @@ export default function ChatInterface() {
   const sendMessage = async () => {
     if (!input.trim()) return;
 
-    const userMessage: Message = {
-      role: "user",
-      content: input,
-    };
-
+    const userMessage: Message = { role: "user", content: input };
     setMessages((prev) => [...prev, userMessage]);
     setInput("");
     setLoading(true);
@@ -77,16 +79,24 @@ export default function ChatInterface() {
 
   return (
     <>
-      {/* Fixed Top-Left Title */}
-      {messages.length > 0 && (
-        <div className="fixed top-4 left-4 z-50">
+      {/* Fixed Top-Left Header */}
+      {messages.length > 0 && mounted && (
+        <div className="fixed top-4 left-4 z-50 flex items-center gap-2">
+          <img
+            src={
+              theme === "dark"
+                ? "/icons/for-dark-theme.png"
+                : "/icons/for-light-theme.png"
+            }
+            alt="Logo"
+            className="w-10 h-10"
+          />
           <h1 className="text-xl font-bold tracking-tight text-gray-900 dark:text-white">
             OmniChat.AI
           </h1>
         </div>
       )}
 
-      {/* Fixed Theme Toggle */}
       <ThemeToggle />
 
       <div
@@ -94,12 +104,25 @@ export default function ChatInterface() {
           messages.length > 0 ? "pt-20" : "mt-10"
         }`}
       >
-        {/* Centered Header (when no chat) */}
+        {/* Centered Header */}
         {messages.length === 0 && (
-          <div className="text-center">
-            <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white">
-              OmniChat.AI
-            </h1>
+          <div className="text-center flex flex-col items-center">
+            <div className="flex items-center justify-center gap-3">
+              {mounted && (
+                <img
+                  src={
+                    theme === "dark"
+                      ? "/icons/for-dark-theme.png"
+                      : "/icons/for-light-theme.png"
+                  }
+                  alt="Logo"
+                  className="w-[70px] h-[70px]"
+                />
+              )}
+              <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white">
+                OmniChat.AI
+              </h1>
+            </div>
             <p className="text-gray-600 dark:text-gray-300 text-sm mt-2">
               Chat with multiple language models.
             </p>
@@ -123,7 +146,6 @@ export default function ChatInterface() {
                     {modelLabels[selectedModel] ?? "AI"}
                   </div>
                 )}
-
                 <div className="prose dark:prose-invert text-sm">
                   <ReactMarkdown>{msg.content}</ReactMarkdown>
                 </div>
@@ -146,7 +168,7 @@ export default function ChatInterface() {
           </div>
         )}
 
-        {/* Input & Model Selector */}
+        {/* Prompt Input */}
         <Card>
           <CardContent className="pt-6 space-y-3">
             <div className="flex items-start justify-between gap-2 flex-wrap">
