@@ -26,6 +26,7 @@ export default function ChatInterface() {
     "meta-llama/llama-3.3-8b-instruct:free": "Llama 3.3 8B Instruct (Meta)",
     "deepseek/deepseek-r1-0528-qwen3-8b:free":
       "Deepseek R1 0528 Qwen3 8B (DeepSeek)",
+    "google/gemma-3-12b-it:free": "Gemma 3 12B (Google)",
   };
 
   const sendMessage = async () => {
@@ -111,15 +112,16 @@ export default function ChatInterface() {
                 key={i}
                 className={`whitespace-pre-wrap p-3 rounded-xl max-w-[80%] ${
                   msg.role === "user"
-                    ? "ml-auto bg-blue-100 dark:bg-blue-800 text-right"
+                    ? "ml-auto bg-blue-100 dark:bg-blue-800 text-left"
                     : "mr-auto bg-gray-100 dark:bg-gray-800 text-left"
                 }`}
               >
-                <div className="text-xs font-semibold mb-1">
-                  {msg.role === "user"
-                    ? "You"
-                    : modelLabels[selectedModel] ?? "AI"}
-                </div>
+                {msg.role === "assistant" && (
+                  <div className="text-xs font-semibold mb-1 text-left">
+                    {modelLabels[selectedModel] ?? "AI"}
+                  </div>
+                )}
+
                 <div className="prose dark:prose-invert text-sm">
                   <ReactMarkdown>{msg.content}</ReactMarkdown>
                 </div>
@@ -159,9 +161,11 @@ export default function ChatInterface() {
               onKeyDown={handleKeyDown}
             />
 
-            <Button onClick={sendMessage} disabled={loading || !input.trim()}>
-              Send
-            </Button>
+            <div className="flex justify-end">
+              <Button onClick={sendMessage} disabled={loading || !input.trim()}>
+                Send
+              </Button>
+            </div>
           </CardContent>
         </Card>
       </div>

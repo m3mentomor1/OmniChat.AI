@@ -28,13 +28,16 @@ export default function ModelSelector({
         </SelectTrigger>
         <SelectContent>
           <SelectItem value="microsoft/phi-4-reasoning-plus:free">
-            microsoft/phi-4-reasoning-plus:free
+            Phi 4 Reasoning Plus (Microsoft)
           </SelectItem>
           <SelectItem value="meta-llama/llama-3.3-8b-instruct:free">
-            meta-llama/llama-3.3-8b-instruct:free
+            Llama 3.3 8B Instruct (Meta)
           </SelectItem>
           <SelectItem value="deepseek/deepseek-r1-0528-qwen3-8b:free">
-            deepseek/deepseek-r1-0528-qwen3-8b:free
+            Deepseek R1 0528 Qwen3 8B (DeepSeek)
+          </SelectItem>
+          <SelectItem value="google/gemma-3-12b-it:free">
+            Gemma 3 12B (Google)
           </SelectItem>
         </SelectContent>
       </Select>
