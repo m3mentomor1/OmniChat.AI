@@ -3,6 +3,9 @@
 </div>
 
 ### 🧐 I. Overview
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/58585d62-c80c-4f34-af6c-5e4cd50d17cd" alt="Logo">
+</div><br>
 
 An AI Chat Progressive Web App (PWA) that lets users chat with the following LLMs:
 - Phi 4 Reasoning Plus (Microsoft)
