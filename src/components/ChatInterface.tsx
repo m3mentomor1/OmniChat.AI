@@ -22,9 +22,10 @@ export default function ChatInterface() {
   const [loading, setLoading] = useState(false);
 
   const modelLabels: Record<string, string> = {
-    "microsoft/phi-4-reasoning-plus:free": "Phi-4 (Microsoft)",
-    "meta-llama/llama-3.3-8b-instruct:free": "LLaMA 3.3 (Meta)",
-    "deepseek/deepseek-r1-0528-qwen3-8b:free": "Qwen3 8B (DeepSeek)",
+    "microsoft/phi-4-reasoning-plus:free": "Phi 4 Reasoning Plus (Microsoft)",
+    "meta-llama/llama-3.3-8b-instruct:free": "Llama 3.3 8B Instruct (Meta)",
+    "deepseek/deepseek-r1-0528-qwen3-8b:free":
+      "Deepseek R1 0528 Qwen3 8B (DeepSeek)",
   };
 
   const sendMessage = async () => {
