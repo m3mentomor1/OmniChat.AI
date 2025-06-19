@@ -12,6 +12,8 @@ An AI Chat Progressive Web App (PWA) that lets users chat with the following LLM
 - Mistral Small 3.1 24B (Mistral)
 
 from a single interface.
+
+Access app here: https://omni-chat-ai-lknq.vercel.app/
 <br><br>
 ##
 
